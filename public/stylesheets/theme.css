@@ -2,3 +2,8 @@ p, div, section, header, footer, a, img, {
   margin: 0;
   padding: 0;
 }
+
+li {
+  list-style-type: none;
+  margin-left: -30px;
+}
