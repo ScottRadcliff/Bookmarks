@@ -1,9 +1,50 @@
-p, div, section, header, footer, a, img, {
+body, p, div, section, header, footer, a, img, ul, li, h1, input {
   margin: 0;
   padding: 0;
 }
 
+
+body {
+  font: 14px Helvetica;
+  line-height: 18px;
+}
+
+header {
+  margin-bottom: 30px;
+  padding-top: 10px;
+}
+
+
+header > input.search-bar {
+  float: right;
+  width: 300px;
+  padding: 5px 0;
+}
+
+
+header > h1 {
+  display: inline;
+}
+
 li {
   list-style-type: none;
-  margin-left: -30px;
+  /* margin-left: -30px; */
+  margin-bottom: 20px;
+}
+
+
+li > a {
+  display: block;
+  padding-bottom: 6px;
+}
+
+
+.description {
+  color: #928E8E;
+}
+
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
 }
