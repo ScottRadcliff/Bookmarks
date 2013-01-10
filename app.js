@@ -8,14 +8,24 @@ var express = require('express')
   , mongoose = require('mongoose')
 
 var app = module.exports = express.createServer();
+
 mongoose.connect('mongodb://localhost/bookmarks');
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
 
-var Bookmark = new Schema({
+var bookmark_schema = new Schema({
     author    : ObjectId
-  , url     : String
+  , url       : String
+  , title     : String
 });
+
+var Bookmark = mongoose.model('Bookmark', bookmark_schema)
+
+var bookmarkInstance = new Bookmark({url: "http://google.com", title: "This is an amazing site."});
+bookmarkInstance.save(function(err){
+  if (err) return console.log("Error");
+});
+
 
 
 
@@ -39,9 +49,15 @@ app.configure('production', function(){
 });
 
 // Routes
-
-app.get('/', routes.index);
+app.get('/', function(req, res){
+  Bookmark.find(function(err, bookmarks){
+    if(!err) {
+      res.render("index", { title: "Bookmarks", bookmarks_collecton: bookmarks })
+    } else {
+      return err;
+    }
+  });
+});
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-console.log(Bookmark.new);
