@@ -9,7 +9,6 @@ var app = module.exports = express.createServer()
 var bookmark = require("./models/bookmark");
 
 // Configuration
-
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -32,7 +31,7 @@ app.get('/', function(req, res){
   var Bookmark = bookmark.new();
   Bookmark.find().sort({"_id": -1}).exec(function(err, bookmarks){
     if(!err) {
-      res.render("index", { title: "Bookmarks", bookmarks_collecton: bookmarks })
+      res.render("index", { bookmarks_collecton: bookmarks })
     } else {
       return err;
     }
@@ -40,7 +39,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/add', function(req, res) {
-  res.render("add", {title: "Bookmarks"});
+  res.render("add");
 });
 
 app.post('/create', function(req, res){
