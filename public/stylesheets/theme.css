@@ -51,6 +51,30 @@ li > a {
 
 
 /* Add */
-input, textarea {
+input[type='text'], textarea {
   display: block;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  margin-bottom: 10px;
+}
+
+label {
+  color: #333;
+}
+
+input[type='text'] {
+  width: 500px;
+  height: 20px;
+}
+
+textarea {
+  width: 500px;
+  height: 200px
+}
+
+#add-link {
+  margin-top: 20px;
+  width: 500px;
+  padding: 20px;
+  border-radius: 5px;
 }
